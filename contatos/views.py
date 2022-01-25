@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.http import Http404
+from django.shortcuts import render, get_object_or_404
 from .models import Contato
 
 def index(request):
@@ -9,7 +10,11 @@ def index(request):
 
 
 def ver_contato(request, contato_id):
-    contato_pelo_id = Contato.objects.get(id=contato_id)
+    # try:
+    # contato_pelo_id = Contato.objects.get(id=contato_id)
+    contato_pelo_id = get_object_or_404(Contato, id=contato_id)
     return render(request=request, template_name='contatos/ver_contato.html', context={
         'contato_pelo_id': contato_pelo_id
     })
+    # except Contato.DoesNotExist as e:
+    #   raise Http404()
