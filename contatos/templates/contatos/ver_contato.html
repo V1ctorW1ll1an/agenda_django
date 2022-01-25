@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1 class="mt-5">{{contato_pelo_id.nome}} {{contato_pelo_id.sobrenome}}</h1>
+    <dl>
+      <dt>ID</dt>
+      <dd>{{contato_pelo_id.id}}</dd>
+
+      <dt>Telefone</dt>
+      <dd>{{contato_pelo_id.telefone}}</dd>
+
+      <dt>E-mail</dt>
+      <dd>{{contato_pelo_id.email}}</dd>
+
+      <dt>Data criação</dt>
+      <dd>{{contato_pelo_id.data_criacao|date:'d/m/Y'}}</dd>
+
+      <dt>Categoria</dt>
+      <dd>{{contato_pelo_id.categoria}}</dd>
+
+      <dt>Descrição</dt>
+      <dd>
+        {{contato_pelo_id.descricao}}
+      </dd>
+    </dl> 
+{% endblock content %}
