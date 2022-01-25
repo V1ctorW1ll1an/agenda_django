@@ -6,7 +6,7 @@ from .models import Categoria, Contato
 class ContatoAdmin(admin.ModelAdmin):
     list_display = ('id', 'nome', 'sobrenome', 'categoria')
     list_display_links = ('id', 'nome', 'sobrenome')
-    list_filter = ('nome', 'sobrenome')
+    # list_filter = ('nome', 'sobrenome')
     search_fields = ('nome',)
     # ... entre outros filtros
 

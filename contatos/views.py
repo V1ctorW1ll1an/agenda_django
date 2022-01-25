@@ -1,4 +1,8 @@
 from django.shortcuts import render
+from .models import Contato
 
 def index(request):
-    return render(request=request, template_name='contatos/index.html')
+    contatos = Contato.objects.all()
+    return render(request=request, template_name='contatos/index.html', context={
+        'contatos': contatos
+    })
