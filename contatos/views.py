@@ -4,7 +4,14 @@ from .models import Contato
 from django.core.paginator import Paginator
 
 def index(request):
-    contatos = Contato.objects.all()
+
+    # contatos = Contato.objects.order_by('nome').filter(
+    #     mostrar = True
+    # ) # filtros podem ser encadeados 
+
+    contatos = Contato.objects.order_by('nome')
+    # contatos = Contato.objects.order_by('-nome') # ordem decrescente
+
     paginator = Paginator(contatos, 1)
     page = request.GET.get('p')
     contatos = paginator.get_page(page)
@@ -17,6 +24,10 @@ def ver_contato(request, contato_id):
     # try:
     # contato_pelo_id = Contato.objects.get(id=contato_id)
     contato_pelo_id = get_object_or_404(Contato, id=contato_id)
+    
+    if not contato_pelo_id.mostrar:
+        raise Http404()
+
     return render(request=request, template_name='contatos/ver_contato.html', context={
         'contato_pelo_id': contato_pelo_id
     })
