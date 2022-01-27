@@ -27,4 +27,13 @@
             {% endfor %}
           </tbody>
         </table>
+        <nav aria-label="Page navigation example">
+          <ul class="pagination">
+            {% for pagina in contatos.paginator.page_range %}
+              <li class="page-item {% if contatos.number == pagina %} active {% endif %}">
+                <a class="page-link" href="?p={{pagina}}">{{pagina}}</a>
+              </li>
+            {% endfor %}
+          </ul>
+        </nav>
 {% endblock content %}
