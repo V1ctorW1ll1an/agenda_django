@@ -2,6 +2,12 @@
 
 {% block content %}
     <h1 class="mt-5">{{contato_pelo_id.nome}} {{contato_pelo_id.sobrenome}}</h1>
+
+    {% if contato_pelo_id.foto %}
+      <p>
+        <img src="{{contato_pelo_id.foto.url}}" style="max-width: 250px; height: auto;" alt="foto de perfil do {{contato_pelo_id.nome}}">
+      </p>
+    {% endif %}
     <dl>
       <dt>ID</dt>
       <dd>{{contato_pelo_id.id}}</dd>
